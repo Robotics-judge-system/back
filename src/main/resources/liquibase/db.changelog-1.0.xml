@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+  <changeSet id="1673015615793-1" author="AnarCom">
+    <createTable tableName="users">
+      <column name="id" type="bigserial" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="username" type="varchar(100)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="email" type="varchar(100)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="name" type="varchar(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="password" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="registered" type="timestamptz" defaultValueComputed="timezone('utc', now())">
+        <constraints nullable="false"/>
+      </column>
+      <column name="password_updated" type="timestamptz"
+        defaultValueComputed="timezone('utc', now())">
+        <constraints nullable="false"/>
+      </column>
+      <column name="user_status" type="varchar(20)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

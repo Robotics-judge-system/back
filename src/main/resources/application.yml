@@ -7,9 +7,15 @@ spring:
       hibernate:
         jdbc:
           time_zone: UTC
+    hibernate:
+      ddl-auto: none
   datasource:
-    url: jdbc:postgresql://${POSTGRES_DB_HOST:localhost}:${POSTGRES_DB_PORT:5432}/db
+    url: jdbc:postgresql://${POSTGRES_DB_HOST:localhost}:${POSTGRES_DB_PORT:5432}/${POSTGRES_DB_NAME:db}
     driver-class-name: org.postgresql.Driver
     username: ${POSTGRES_DB_USERNAME:root}
     password: ${POSTGRES_DB_PASSWORD:root}
-
+  liquibase:
+    change-log: classpath:liquibase/db.changelog-master.xml
+    url: jdbc:postgresql://${POSTGRES_DB_HOST:localhost}:${POSTGRES_DB_PORT:5432}/${POSTGRES_DB_NAME:db}
+    user: ${POSTGRES_DB_USERNAME:root}
+    password: ${POSTGERS_DB_PASSWORD:root}

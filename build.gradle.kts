@@ -23,11 +23,13 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-//	implementation("org.liquibase:liquibase-core")
+	implementation("org.liquibase:liquibase-core")
+	implementation("org.springframework.boot:spring-boot-starter-security:3.0.1")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework:spring-webflux")
 	testImplementation("org.springframework.graphql:spring-graphql-test")
+	testImplementation("org.springframework.security:spring-security-test:5.7.3")
 }
 
 tasks.withType<KotlinCompile> {
