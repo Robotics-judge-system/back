@@ -26,7 +26,7 @@ class User(
     @Column(name = "registered")
     val registered: Instant = Clock.systemDefaultZone().instant(),
 
-    @Column(name = "passwod_updated")
+    @Column(name = "password_updated")
     private var passwordUpdated: Instant = Clock.systemDefaultZone().instant(),
 
     @Enumerated(EnumType.STRING)

@@ -18,4 +18,10 @@ spring:
     change-log: classpath:liquibase/db.changelog-master.xml
     url: jdbc:postgresql://${POSTGRES_DB_HOST:localhost}:${POSTGRES_DB_PORT:5432}/${POSTGRES_DB_NAME:db}
     user: ${POSTGRES_DB_USERNAME:root}
-    password: ${POSTGERS_DB_PASSWORD:root}
+    password: ${POSTGRES_DB_PASSWORD:root}
+
+joust:
+  security:
+    jwt-token:
+      secret: secret
+      validity: 3600000
