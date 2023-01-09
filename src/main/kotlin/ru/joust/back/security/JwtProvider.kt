@@ -43,28 +43,39 @@ class JwtProvider {
 
     fun generateRefreshToken(
         secret: String,
-        refreshTokenId: Long
+        refreshTokenId: Long,
+        userId: Long
     ): String {
         return Jwts.builder()
             .setSubject(secret)
             .setExpiration(null)
             .signWith(key)
             .claim("id", refreshTokenId)
+            .claim("user_id", userId)
             .compact()
     }
 
     fun refreshTokenInfo(
         token: String
-    ): Pair<Long, String> {
+    ): Triple<Long, Long, String> {
         val body = Jwts.parserBuilder()
             .setSigningKey(key)
             .build()
             .parseClaimsJws(token)
             .body
-        return Pair(
-            body["id"] as Long,
-            body.subject as String
+        return Triple(
+            castUtil(body["id"]),
+            castUtil(body["user_id"]),
+            body.subject as String,
         )
+    }
+
+    private fun castUtil(
+        value:Any?
+    ) = when(value){
+        is Int -> value.toLong()
+        is Long -> value
+        else -> throw Exception()
     }
 
     fun validateToken(

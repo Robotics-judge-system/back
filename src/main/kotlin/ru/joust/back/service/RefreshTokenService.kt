@@ -32,6 +32,11 @@ class RefreshTokenService(
         return saveRefreshToken(token, user)
     }
 
+    fun getByIdAndSecret(
+        id: Long,
+        secret: String
+    ) = refreshTokenRepository.getByIdAndSecret(id, secret)
+
     private fun generateRandomRefreshToken(
         length: Int
     ): String {
