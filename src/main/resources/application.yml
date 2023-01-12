@@ -20,6 +20,7 @@ spring:
     user: ${POSTGRES_DB_USERNAME:root}
     password: ${POSTGRES_DB_PASSWORD:root}
 
+
 joust:
   security:
     jwt-token:

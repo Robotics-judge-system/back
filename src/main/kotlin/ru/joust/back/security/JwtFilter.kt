@@ -1,6 +1,5 @@
 package ru.joust.back.security
 
-import jakarta.security.auth.message.AuthException
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletRequest
 import jakarta.servlet.ServletResponse

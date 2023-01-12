@@ -1,6 +1,7 @@
 package ru.joust.back.service
 
 import jakarta.security.auth.message.AuthException
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import ru.joust.back.dto.LoginRequestDto
@@ -15,12 +16,13 @@ class AuthService(
     private val jwtProvider: JwtProvider,
     private val refreshTokenService: RefreshTokenService,
     private val userService: UserService,
+    private val bCryptPasswordEncoder: BCryptPasswordEncoder
 ) {
     @Transactional
     fun login(loginRequestDto: LoginRequestDto): LoginResponseDto {
         val user = userRepository.findByUsername(loginRequestDto.login)
             ?: throw AuthException("no such user")
-        if (user.password != loginRequestDto.password) {
+        if (bCryptPasswordEncoder.matches(loginRequestDto.password, user.password)) {
             throw AuthException("incorrect login\\password")
         }
 

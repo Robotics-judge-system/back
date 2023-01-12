@@ -1,6 +1,7 @@
 package ru.joust.back.entity
 
 import jakarta.persistence.*
+import jakarta.validation.constraints.Email
 import java.time.Clock
 import java.time.Instant
 
@@ -15,6 +16,7 @@ class User(
     var username: String = "",
 
     @Column(name = "email")
+    @get:Email
     val email: String = "",
 
     @Column(name = "name")

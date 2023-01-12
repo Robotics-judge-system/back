@@ -27,6 +27,7 @@ class SecurityConfig(
                 authz
                     .requestMatchers("/api/v1/login").permitAll()
                     .requestMatchers("/api/v1/refresh").permitAll()
+                    .requestMatchers("/api/v1/user/register").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter::class.java)

@@ -6,7 +6,7 @@ import java.time.Instant
 
 @Entity
 @Table(name = "refresh_tokens")
-open class RefreshToken(
+class RefreshToken(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
